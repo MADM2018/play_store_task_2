@@ -1,0 +1,56 @@
+---
+title: "Opiniones apps Play Store (kaggle) Taller2"
+author: "Ricardo Alberich"
+date: "20 de febrero de 2019"
+output: 
+  html_document: 
+    number_sections: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Taller 2 minería de texto Opiniones de Apps de la Play Store
+
+Se pide:
+
+## Carga de datos
+En [kaggle](https://www.kaggle.com/lava18/google-play-store-apps) podéis encontrar Dos ficheros cvs que contiene información sobre valoraciones de usuarios de apps de la Play Store y de datos sobre cada app. Descargar y documentar  estos datos de Kaggle
+
+
+
+```{r}
+library("tidyverse")
+```
+
+
+```{r}
+metadata_apps=read_csv("googleplaystoreApps/googleplaystore.csv")
+reviews_apps=read_csv("googleplaystoreApps/googleplaystore_user_reviews.csv")
+```
+
+Limpiamos, al menos, los los reviews qu están a "nan". Igual convendría limipar más
+
+
+
+```{r cars}
+reviews_apps <- reviews_apps %>% filter(Translated_Review!="nan")
+```
+
+##  Análisis de n-gramas
+
+Calcular 2-gramas y analizar sentimientos en las 3 o 4 categorías de juegos más comentadas. Tened en cuenta los negadores o algunos aspectos de los dos gramas. Realizar gráficos útiles que comparen los resultados.
+
+
+## Document term matrix
+
+Para las 3 o 4 categoría de juegos anteriores limpiar el texto con tm o quanteda (espaciones dobles mayúsculas) calcular la document term matrix y otros analizadores. Representar gráficamente los resultados 
+
+
+## Topic Models
+
+Para los mismos datos que los apartados anteriores calcular un numero  de tópicos adecuado. Representar gráficamente los resultados.
+
+
+
